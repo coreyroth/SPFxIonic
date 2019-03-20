@@ -14,7 +14,7 @@ import {
   IonCardSubtitle,
   IonButton,
   IonModal,
-  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon
+  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon, IonPopover
 } from '@ionic/react';
 
 
@@ -37,7 +37,7 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
   public render(): React.ReactElement<ISpFxIonicProps> {
     return (
       <div>
-    <IonHeader>
+        <IonHeader>
           <IonToolbar color="primary">
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
@@ -50,25 +50,34 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
             </IonButtons>
           </IonToolbar>
         </IonHeader>
-          <IonCard>
-            <IonCardHeader>
-              <IonCardSubtitle>Welcome to Ionic</IonCardSubtitle>
-              <IonCardTitle>Running on React</IonCardTitle>
-            </IonCardHeader>
-          </IonCard>
-          <IonButton click={() => {
-            this.setState({
-              showModal: true
-            });
-          }}>
+        <IonCard>
+          <IonCardHeader>
+            <IonCardSubtitle>Welcome to Ionic</IonCardSubtitle>
+            <IonCardTitle>Running on React</IonCardTitle>
+          </IonCardHeader>
+        </IonCard>
+        <IonButton click={() => {
+          this.setState({
+            showModal: true
+          });
+        }}>
           Open Modal
           </IonButton>
-          <IonModal
-  isOpen={this.state.showModal}
-  onDidDismiss={() => this.setState(() => ({ showModal: false}))}
->
-  Some content to display in the modal.
+        <IonModal
+          isOpen={this.state.showModal}
+          onDidDismiss={() => this.setState(() => ({ showModal: false }))}
+        >
+          Some content to display in the modal.
 </IonModal>
+        <IonPopover
+          isOpen={this.state.showPopover}
+          event={this.state.showPopoverEvent}
+          onDidDismiss={this.dismissPopover}
+        >
+          <div>
+            This is a popover.
+          </div>
+        </IonPopover>
       </div>
     );
   }
@@ -77,6 +86,13 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
     this.setState(() => ({
       showPopover: true,
       showPopoverEvent: e
+    }));
+  }
+
+  dismissPopover = () => {
+    this.setState(() => ({
+      'showPopover': false,
+      'showPopoverEvent': null
     }));
   }
 }
