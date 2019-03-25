@@ -6,15 +6,12 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import '@ionic/core/css/core.css';
 import '@ionic/core/css/ionic.bundle.css';
 import {
-  IonApp,
-  IonContent,
   IonCard,
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
   IonButton,
-  IonModal,
-  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon, IonPopover
+  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon, IonPopover, IonList, IonAvatar, IonItem, IonLabel
 } from '@ionic/react';
 
 
@@ -24,6 +21,34 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
   showPopoverEvent: null | MouseEvent
   showModal: boolean
 }> {
+
+  private sampleData = [
+    {
+      id: 1,
+      image_url: 'https://via.placeholder.com/150',
+      name: "Item 1"
+    },
+    {
+      id: 2,
+      image_url: 'https://via.placeholder.com/150',
+      name: "Item 2"
+    },
+    {
+      id: 3,
+      image_url: 'https://via.placeholder.com/150',
+      name: "Item 3"
+    },
+    {
+      id: 4,
+      image_url: 'https://via.placeholder.com/150',
+      name: "Item 4"
+    },
+    {
+      id: 5,
+      image_url: 'https://via.placeholder.com/150',
+      name: "Item 5"
+    } 
+  ];
 
   constructor(props: ISpFxIonicProps) {
     super(props);
@@ -57,18 +82,10 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
           </IonCardHeader>
         </IonCard>
         <IonButton click={() => {
-          this.setState({
-            showModal: true
-          });
+          alert('Click');
         }}>
-          Open Modal
+          Button
           </IonButton>
-        <IonModal
-          isOpen={this.state.showModal}
-          onDidDismiss={() => this.setState(() => ({ showModal: false }))}
-        >
-          Some content to display in the modal.
-</IonModal>
         <IonPopover
           isOpen={this.state.showPopover}
           event={this.state.showPopoverEvent}
@@ -78,18 +95,32 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
             This is a popover.
           </div>
         </IonPopover>
+        <IonList>
+          {
+            this.sampleData.map(item => (
+              <IonItem>
+                <IonAvatar slot="start">
+                <img src={item.image_url}></img>
+                </IonAvatar>
+                <IonLabel>
+                  {item.name}
+                </IonLabel>
+              </IonItem>
+            ))
+          }
+        </IonList>
       </div>
     );
   }
 
-  presentPopover = (e: MouseEvent) => {
+  private presentPopover = (e: MouseEvent) => {
     this.setState(() => ({
       showPopover: true,
       showPopoverEvent: e
     }));
   }
 
-  dismissPopover = () => {
+  private dismissPopover = () => {
     this.setState(() => ({
       'showPopover': false,
       'showPopoverEvent': null
