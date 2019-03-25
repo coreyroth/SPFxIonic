@@ -47,7 +47,7 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
       id: 5,
       image_url: 'https://via.placeholder.com/150',
       name: "Item 5"
-    } 
+    }
   ];
 
   constructor(props: ISpFxIonicProps) {
@@ -90,8 +90,22 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
         <IonButton click={() => {
           alert('Click');
         }}>
+          <IonIcon slot="start" name="airplane"></IonIcon>
           Button
           </IonButton>
+        <IonButton color="danger" click={() => {
+          alert('Click');
+        }}>
+          <IonIcon slot="start" name="flame"></IonIcon>
+          Button
+          </IonButton>
+          <IonButton color="secondary" click={() => {
+          alert('Click');
+        }}>
+          <IonIcon slot="start" name="nuclear"></IonIcon>
+          Button
+          </IonButton>
+
         <IonPopover
           isOpen={this.state.showPopover}
           event={this.state.showPopoverEvent}
@@ -106,7 +120,7 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
             this.sampleData.map(item => (
               <IonItem>
                 <IonAvatar slot="start">
-                <img src={item.image_url}></img>
+                  <img src={item.image_url}></img>
                 </IonAvatar>
                 <IonLabel>
                   {item.name}
