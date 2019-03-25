@@ -11,7 +11,7 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonButton,
-  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon, IonPopover, IonList, IonAvatar, IonItem, IonLabel
+  IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonIcon, IonPopover, IonList, IonAvatar, IonItem, IonLabel, IonCardContent
 } from '@ionic/react';
 
 
@@ -80,6 +80,12 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
             <IonCardSubtitle>Welcome to Ionic</IonCardSubtitle>
             <IonCardTitle>Running on React</IonCardTitle>
           </IonCardHeader>
+          <IonCardContent>
+            <img src="https://via.placeholder.com/500x200"></img>
+            <IonLabel>
+              This is some card content.
+            </IonLabel>
+          </IonCardContent>
         </IonCard>
         <IonButton click={() => {
           alert('Click');
