@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.8.0",
+    "version": "1.8.1",
     "libraryName": "sp-fx-ionic",
     "libraryId": "fa570b2e-7f27-4819-8596-d5de30aefe64",
     "packageManager": "npm",

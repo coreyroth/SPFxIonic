@@ -57,6 +57,7 @@ export default class SpFxIonic extends React.Component<ISpFxIonicProps, {
       showPopoverEvent: undefined,
       showModal: false
     };
+    console.log('SPFxIonic Data - ', this.sampleData);
   }
 
   public render(): React.ReactElement<ISpFxIonicProps> {
